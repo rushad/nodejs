@@ -1,2 +1,5 @@
-module.exports.User = require('./user');
-module.exports.Product = require('./product');
+import User from './user';
+import Product from './product';
+
+module.exports.User = User;
+module.exports.Product = Product;

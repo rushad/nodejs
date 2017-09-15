@@ -1,3 +1,5 @@
+require('babel-register')();
+
 const config = require('./config');
 const models = require('./models');
 
