@@ -1,22 +1,33 @@
 import fs from 'fs';
+import EventEmitter from 'events';
 
-class DirWatcher {
+class DirWatcher extends EventEmitter {
+    static EVENT_CHANGED = 'dirwatcher:changed';
+
+    isChanged = false;
+    timer = null;
+    fsWatcher = null;
+
     watch(path, delay) {
-        this.dirStat = this.stat(path);
+        if (this.timer) {
+            throw new Error('DirWatcher is already watching');
+        }
         this.timer = setInterval(() => {
-            const dirStat = this.stat(path);
-            if (dirStat !== this.dirStat) {
-                console.log('Dir changed', dirStat);
+            if (this.isChanged) {
+                this.isChanged = false;
+                this.emit(DirWatcher.EVENT_CHANGED);
             }
-            this.dirStat = dirStat;
         }, delay);
+        this.fsWatcher = fs.watch(path, (eventType, filename) => {
+            this.isChanged = true;
+        });
     }
 
-    stat(path) {
-        return fs.readdirSync(path).reduce((res, file) => {
-            const stat = fs.statSync(`${path}/${file}`);
-            return `${res}${file}:${stat.size}:${stat.mtime.getTime()};`;
-        }, '');
+    unwatch() {
+        clearInterval(this.timer);
+        this.fsWatcher.close();
+        this.timer = null;
+        this.fsWatcher = null;
     }
 }
 
