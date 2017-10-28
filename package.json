@@ -25,6 +25,8 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "csv-parse": "^1.2.3"
+    "csv-parse": "^1.2.3",
+    "minimist": "^1.2.0",
+    "through2": "^2.0.3"
   }
 }
