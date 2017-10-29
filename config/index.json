@@ -1,3 +1,6 @@
 {
-    "appName": "NodeMP HW App"
+    "appName": "NodeMP HW App",
+    "tabSize": 4,
+    "lineBreak": "\n",
+    "cssUrl": "https://www.epam.com/etc/clientlibs/foundation/main.min.fc69c13add6eae57cd247a91c7e26a15.css"
 }
