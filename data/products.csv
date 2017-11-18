@@ -1,3 +1,3 @@
-manufacturer, model
-Apple, iPhone
-Samsung, Galaxy
+id,manufacturer,model
+1,Apple,iPhone
+2,Samsung,Galaxy S

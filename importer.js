@@ -11,25 +11,24 @@ class Importer {
 
     constructor(options) {
         this.path = (options || {}).path || './data';
+        this.callback = (options || {}).callback;
         this.dirWatcher = new DirWatcher();
         this.dirWatcher.watch(this.path, (options || {}).delay || 1000);
-        this.dirWatcher.on(DirWatcher.EVENT_CHANGED, () => {
-            console.log('Directory changed');
-            console.log('Sync:');
-            try {
-                console.log(this.importSync(this.path));
-            } catch(error) {
+        this.dirWatcher.on(DirWatcher.EVENT_CHANGED, this.onChanged);
+        this.onChanged();
+    }
+
+    onChanged = () => {
+        this.import(this.path)
+            .then((json) => {
+                console.log(json);
+                if (this.callback) {
+                    this.callback(json);
+                }
+            })
+            .catch((error) => {
                 console.log(error.message);
-            }
-            console.log('Async:');
-            this.import(this.path)
-                .then((json) => {
-                    console.log(json);
-                })
-                .catch((error) => {
-                    console.log(error.message);
-                });    
-        });
+            });    
     }
 
     importSync(path) {
