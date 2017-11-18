@@ -24,6 +24,7 @@ const importer = new Importer({
 });
 
 const app = express();
+app.set('x-powered-by', false);
 
 app.use(cookieParser, queryParser);
 
