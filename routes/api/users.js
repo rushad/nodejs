@@ -1,10 +1,10 @@
 import express from 'express';
-import { db } from '../app';
+import { DB } from '../../app';
 
 const router = express.Router();
 
 router.get('/', function(req, res) {
-    res.send(db.users);
+    res.send(DB.users);
 });
 
 module.exports = router;
