@@ -19,9 +19,8 @@ class Importer {
     }
 
     onChanged = () => {
-        this.import(this.path)
+        this.import()
             .then((json) => {
-                console.log(json);
                 if (this.callback) {
                     this.callback(json);
                 }
@@ -31,10 +30,10 @@ class Importer {
             });    
     }
 
-    importSync(path) {
-        const filenames = fs.readdirSync(path);
-        return fs.readdirSync(path).reduce((result, filename) => {
-            const json = this._importFileSync(`${path}/${filename}`);
+    importSync() {
+        const filenames = fs.readdirSync(this.path);
+        return fs.readdirSync(this.path).reduce((result, filename) => {
+            const json = this._importFileSync(`${this.path}/${filename}`);
             return {
                 ...result,
                 [filename]: json
@@ -42,9 +41,9 @@ class Importer {
         }, {});
     }
 
-    import(path) {
+    import() {
         return new Promise((resolve, reject) => {
-            fs.readdir(path, (err, filenames) => {
+            fs.readdir(this.path, (err, filenames) => {
                 if (err) {
                     reject(err);
                     return;
@@ -52,7 +51,7 @@ class Importer {
                 let result = {};
                 filenames.reduce((promise, filename) =>
                     promise.then(() => {
-                        return this._importFile(`${path}/${filename}`)
+                        return this._importFile(`${this.path}/${filename}`)
                             .then((json) => {
                                 result[filename] = json;
                             });

@@ -1,10 +1,12 @@
 import express from 'express';
-import { DB } from '../../app';
+import models from '../../db/models';
 
 const router = express.Router();
 
 router.get('/', function(req, res) {
-    res.send(DB.users);
+    models.user.findAll()
+        .then((users) => res.json(users))
+        .catch((error) => res.status(404).json(error));
 });
 
 module.exports = router;
