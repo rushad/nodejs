@@ -9,7 +9,6 @@ export function initMongoDB() {
                 reject(err);
             } else {
                 db = database.db('nodejs');
-                console.log('MongoDB: connection established', db);
                 resolve();
             }
         });

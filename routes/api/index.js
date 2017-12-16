@@ -6,6 +6,8 @@ import cities from './cities';
 
 const api = express.Router();
 
+api.use(express.json());
+
 api.use('/users', users);
 api.use('/products', products);
 api.use('/cities', cities);
