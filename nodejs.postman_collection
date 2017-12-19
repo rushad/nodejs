@@ -1,0 +1,257 @@
+{
+	"variables": [],
+	"info": {
+		"name": "nodejs",
+		"_postman_id": "4a6dd099-ba72-dd4c-e6fa-20e369acd9df",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"description": "",
+			"item": [
+				{
+					"name": "cities",
+					"description": "",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"url": "http://localhost:8080/api/cities",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/random",
+							"request": {
+								"url": "http://localhost:8080/api/cities/random",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"url": "http://localhost:8080/api/cities",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Kiev\",\n\t\"country\": \"Ukraine\",\n\t\"capital\": true,\n\t\"location\": {\n\t\t\"lat\": 50.450100,\n\t\t\"long\": 30.523400\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/cities/123456789012345678901234",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Orodruin\",\n\t\"country\": \"Mordor\",\n\t\"capital\": true,\n\t\"location\": {\n\t\t\"lat\": 90,\n\t\t\"long\": 0\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/cities/123456789012345678901234",
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "users",
+					"description": "",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"url": "http://localhost:8080/api/users",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/users/123456789012345678901234",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"Darth\",\n\t\"lastName\": \"Vader\",\n\t\"gender\": true\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/users/123456789012345678901234",
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "products",
+					"description": "",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"url": "http://localhost:8080/api/products",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/products/5a3559fba099432436c24d45",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id/reviews",
+							"request": {
+								"url": "http://localhost:8080/api/products/5a3559fba099432436c24d45/reviews",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"url": "http://localhost:8080/api/products",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"manufacturer\": \"Lada\",\n\t\"model\": \"Largus\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/products/123456789012345678901234",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"manufacturer\": \"Kalashnikov\",\n\t\"model\": \"AK-47\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"url": "http://localhost:8080/api/products/123456789012345678901234",
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "/auth/local",
+			"request": {
+				"url": "http://localhost:8080/auth/local",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"rushad\",\n\t\"password\": \"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

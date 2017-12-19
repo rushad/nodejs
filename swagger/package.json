@@ -8,7 +8,9 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.12.3",
+    "mongoose": "^4.13.7",
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {

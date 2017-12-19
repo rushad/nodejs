@@ -145,8 +145,6 @@ paths:
       tags:
       - Cities
       summary: Get random city
-      produces:
-      - application/json
       responses:
         200:
           description: OK
@@ -274,7 +272,7 @@ paths:
   /products/{id}:
     x-swagger-router-controller: products
     get:
-      operationId: getOneProduct
+      operationId: getProduct
       tags:
         - Products
       summary: Get product with given ID
@@ -344,7 +342,7 @@ paths:
   /products/{id}/reviews:
     x-swagger-router-controller: products
     get:
-      operationId: getReviewsForProduct
+      operationId: getProductReviews
       tags:
       - Products
       summary: Get all reviews for the product with given ID
@@ -358,10 +356,16 @@ paths:
         200:
           description: OK
           schema:
-            type: array
-            items:
-              type: string
-              example: 'iPhone rocks!'
+            type: object
+            properties:
+              _id:
+                type: string
+                example: '123456789012345678901234'
+              reviews:
+                type: array
+                items:
+                  type: string
+                  example: 'iPhone rocks!'
         404:
           description: Error
 definitions:

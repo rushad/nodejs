@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 export let City;
 export let User;
 export let Product;
-export let Review;
 
 const TITLE_CASE_VALIDATOR = {
     validator: val => /[A-Z][a-z]*/.test(val)
@@ -34,9 +33,9 @@ const SCHEMAS = {
 export async function initMongoose() {
     mongoose.Promise = global.Promise;
     const db = await mongoose.createConnection(process.env.MONGOOSE_URI, { useMongoClient: true });
+    
     const options = { 
         timestamps: { 
-            createdAt: null,
             updatedAt: 'lastModifiedDate'
         }
     };

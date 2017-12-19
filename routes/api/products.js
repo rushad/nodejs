@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
 */
     try {
         const product = await Product.findOne({ _id: req.params.id }).select('-reviews').exec();
-        res.json(product);
+        res.json(product || {});
     } catch (error) {
         res.status(404).json(error);
     }
